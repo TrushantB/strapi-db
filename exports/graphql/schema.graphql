@@ -1,0 +1,764 @@
+type AboutUs {
+  first_name: String
+  last_name: String
+  face_img: UploadFile
+  party_name: String
+  party_symbol: UploadFile
+  mob_no: Long
+  mail_id: String
+  facebook_link: String
+  twitter_link: String
+  linkedin_link: String
+  insta_link: String
+  profile_image: UploadFile
+  info: String
+  vision: String
+  mission: String
+  office_address: String
+  android_link: String
+  google_map_link: String
+  contact_us_info: String
+  ward_no: String
+  ward_area: String
+  home_banner(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input AboutUsInput {
+  first_name: String
+  last_name: String
+  face_img: ID
+  party_name: String
+  party_symbol: ID
+  mob_no: Long
+  mail_id: String
+  facebook_link: String
+  twitter_link: String
+  linkedin_link: String
+  insta_link: String
+  profile_image: ID
+  info: String
+  vision: String
+  mission: String
+  office_address: String
+  android_link: String
+  google_map_link: String
+  home_banner: [ID]
+  contact_us_info: String
+  ward_no: String
+  ward_area: String
+}
+
+type ComponentHospitalHospitalList {
+  Name: String
+  mobile_no: Long
+  id: ID!
+}
+
+input ComponentHospitalHospitalListInput {
+  Name: String
+  mobile_no: Long
+}
+
+type ComponentPoliceStationPoliceStation {
+  name: String
+  mobile_no: Long
+  id: ID!
+}
+
+input ComponentPoliceStationPoliceStationInput {
+  name: String
+  mobile_no: Long
+}
+
+input createAboutUsInput {
+  data: AboutUsInput
+}
+
+type createAboutUsPayload {
+  aboutUs: AboutUs
+}
+
+input createEmergencyContactInput {
+  data: EmergencyContactInput
+}
+
+type createEmergencyContactPayload {
+  emergencyContact: EmergencyContact
+}
+
+input createGalleryInput {
+  data: GalleryInput
+}
+
+type createGalleryPayload {
+  gallery: Gallery
+}
+
+input createHomeInput {
+  data: HomeInput
+}
+
+type createHomePayload {
+  home: Home
+}
+
+input createPostInput {
+  data: PostInput
+}
+
+type createPostPayload {
+  post: Post
+}
+
+input createRecentActivityInput {
+  data: RecentActivityInput
+}
+
+type createRecentActivityPayload {
+  recentActivity: RecentActivity
+}
+
+input createRegisterComplaintInput {
+  data: RegisterComplaintInput
+}
+
+type createRegisterComplaintPayload {
+  registerComplaint: RegisterComplaints
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createSocialWorkDetailInput {
+  data: SocialWorkDetailInput
+}
+
+type createSocialWorkDetailPayload {
+  socialWorkDetail: SocialWorkDetails
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input deleteAboutUsInput {
+  where: InputID
+}
+
+type deleteAboutUsPayload {
+  aboutUs: AboutUs
+}
+
+input deleteEmergencyContactInput {
+  where: InputID
+}
+
+type deleteEmergencyContactPayload {
+  emergencyContact: EmergencyContact
+}
+
+input deleteGalleryInput {
+  where: InputID
+}
+
+type deleteGalleryPayload {
+  gallery: Gallery
+}
+
+input deleteHomeInput {
+  where: InputID
+}
+
+type deleteHomePayload {
+  home: Home
+}
+
+input deletePostInput {
+  where: InputID
+}
+
+type deletePostPayload {
+  post: Post
+}
+
+input deleteRecentActivityInput {
+  where: InputID
+}
+
+type deleteRecentActivityPayload {
+  recentActivity: RecentActivity
+}
+
+input deleteRegisterComplaintInput {
+  where: InputID
+}
+
+type deleteRegisterComplaintPayload {
+  registerComplaint: RegisterComplaints
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteSocialWorkDetailInput {
+  where: InputID
+}
+
+type deleteSocialWorkDetailPayload {
+  socialWorkDetail: SocialWorkDetails
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input editAboutUsInput {
+  first_name: String
+  last_name: String
+  face_img: ID
+  party_name: String
+  party_symbol: ID
+  mob_no: Long
+  mail_id: String
+  facebook_link: String
+  twitter_link: String
+  linkedin_link: String
+  insta_link: String
+  profile_image: ID
+  info: String
+  vision: String
+  mission: String
+  office_address: String
+  android_link: String
+  google_map_link: String
+  home_banner: [ID]
+  contact_us_info: String
+  ward_no: String
+  ward_area: String
+}
+
+input editComponentHospitalHospitalListInput {
+  id: ID
+  Name: String
+  mobile_no: Long
+}
+
+input editComponentPoliceStationPoliceStationInput {
+  id: ID
+  name: String
+  mobile_no: Long
+}
+
+input editEmergencyContactInput {
+  Hospitals: [editComponentHospitalHospitalListInput]
+  pstation: [editComponentPoliceStationPoliceStationInput]
+}
+
+input editFileInput {
+  name: String
+  hash: String
+  sha256: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+}
+
+input editGalleryInput {
+  title: String
+  images: [ID]
+  image: ID
+}
+
+input editHomeInput {
+  title: String
+  banner: [ID]
+}
+
+input editPostInput {
+  title: String
+  date: Date
+  description: String
+  post_image: ID
+  post_gallery: [ID]
+}
+
+input editRecentActivityInput {
+  title: String
+  image: [ID]
+  description: String
+}
+
+input editRegisterComplaintInput {
+  title: String
+  description: String
+  sub_title: String
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editSocialWorkDetailInput {
+  title: String
+  image: ID
+  description: String
+  date: String
+  gallery: [ID]
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+type EmergencyContact {
+  Hospitals: [ComponentHospitalHospitalList]
+  pstation: [ComponentPoliceStationPoliceStation]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input EmergencyContactInput {
+  Hospitals: [ComponentHospitalHospitalListInput]
+  pstation: [ComponentPoliceStationPoliceStationInput]
+}
+
+input FileInput {
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+}
+
+type Gallery {
+  title: String
+  image: UploadFile
+  images(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input GalleryInput {
+  title: String
+  images: [ID]
+  image: ID
+}
+
+type Home {
+  title: String
+  banner(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input HomeInput {
+  title: String
+  banner: [ID]
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | AboutUs | createAboutUsPayload | updateAboutUsPayload | deleteAboutUsPayload | EmergencyContact | createEmergencyContactPayload | updateEmergencyContactPayload | deleteEmergencyContactPayload | Gallery | createGalleryPayload | updateGalleryPayload | deleteGalleryPayload | Home | createHomePayload | updateHomePayload | deleteHomePayload | Post | createPostPayload | updatePostPayload | deletePostPayload | RecentActivity | createRecentActivityPayload | updateRecentActivityPayload | deleteRecentActivityPayload | RegisterComplaints | createRegisterComplaintPayload | updateRegisterComplaintPayload | deleteRegisterComplaintPayload | SocialWorkDetails | createSocialWorkDetailPayload | updateSocialWorkDetailPayload | deleteSocialWorkDetailPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+
+type Mutation {
+  createAboutUs(input: createAboutUsInput): createAboutUsPayload
+  updateAboutUs(input: updateAboutUsInput): updateAboutUsPayload
+  deleteAboutUs(input: deleteAboutUsInput): deleteAboutUsPayload
+  createEmergencyContact(input: createEmergencyContactInput): createEmergencyContactPayload
+  updateEmergencyContact(input: updateEmergencyContactInput): updateEmergencyContactPayload
+  deleteEmergencyContact(input: deleteEmergencyContactInput): deleteEmergencyContactPayload
+  createGallery(input: createGalleryInput): createGalleryPayload
+  updateGallery(input: updateGalleryInput): updateGalleryPayload
+  deleteGallery(input: deleteGalleryInput): deleteGalleryPayload
+  createHome(input: createHomeInput): createHomePayload
+  updateHome(input: updateHomeInput): updateHomePayload
+  deleteHome(input: deleteHomeInput): deleteHomePayload
+  createPost(input: createPostInput): createPostPayload
+  updatePost(input: updatePostInput): updatePostPayload
+  deletePost(input: deletePostInput): deletePostPayload
+  createRecentActivity(input: createRecentActivityInput): createRecentActivityPayload
+  updateRecentActivity(input: updateRecentActivityInput): updateRecentActivityPayload
+  deleteRecentActivity(input: deleteRecentActivityInput): deleteRecentActivityPayload
+  createRegisterComplaint(input: createRegisterComplaintInput): createRegisterComplaintPayload
+  updateRegisterComplaint(input: updateRegisterComplaintInput): updateRegisterComplaintPayload
+  deleteRegisterComplaint(input: deleteRegisterComplaintInput): deleteRegisterComplaintPayload
+  createSocialWorkDetail(input: createSocialWorkDetailInput): createSocialWorkDetailPayload
+  updateSocialWorkDetail(input: updateSocialWorkDetailInput): updateSocialWorkDetailPayload
+  deleteSocialWorkDetail(input: deleteSocialWorkDetailInput): deleteSocialWorkDetailPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UserInput!): UsersPermissionsLoginPayload!
+}
+
+type Post {
+  title: String
+  date: Date
+  description: String
+  post_image: UploadFile
+  post_gallery(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input PostInput {
+  title: String
+  date: Date
+  description: String
+  post_image: ID
+  post_gallery: [ID]
+}
+
+type Query {
+  aboutUs(id: ID!): AboutUs
+  aboutuses(sort: String, limit: Int, start: Int, where: JSON): [AboutUs]
+  emergencyContact(id: ID!): EmergencyContact
+  emergencyContacts(sort: String, limit: Int, start: Int, where: JSON): [EmergencyContact]
+  gallery(id: ID!): Gallery
+  galleries(sort: String, limit: Int, start: Int, where: JSON): [Gallery]
+  home(id: ID!): Home
+  homes(sort: String, limit: Int, start: Int, where: JSON): [Home]
+  post(id: ID!): Post
+  posts(sort: String, limit: Int, start: Int, where: JSON): [Post]
+  recentActivity(id: ID!): RecentActivity
+  recentActivities(sort: String, limit: Int, start: Int, where: JSON): [RecentActivity]
+  registerComplaint(id: ID!): RegisterComplaints
+  registerComplaints(sort: String, limit: Int, start: Int, where: JSON): [RegisterComplaints]
+  socialWorkDetail(id: ID!): SocialWorkDetails
+  socialWorkDetails(sort: String, limit: Int, start: Int, where: JSON): [SocialWorkDetails]
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  me: UsersPermissionsMe
+}
+
+type RecentActivity {
+  title: String
+  description: String
+  image(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input RecentActivityInput {
+  title: String
+  image: [ID]
+  description: String
+}
+
+input RegisterComplaintInput {
+  title: String
+  description: String
+  sub_title: String
+}
+
+type RegisterComplaints {
+  title: String
+  description: String
+  sub_title: String
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input SocialWorkDetailInput {
+  title: String
+  image: ID
+  description: String
+  date: String
+  gallery: [ID]
+}
+
+type SocialWorkDetails {
+  title: String
+  image: UploadFile
+  description: String
+  date: String
+  gallery(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+input updateAboutUsInput {
+  where: InputID
+  data: editAboutUsInput
+}
+
+type updateAboutUsPayload {
+  aboutUs: AboutUs
+}
+
+input updateEmergencyContactInput {
+  where: InputID
+  data: editEmergencyContactInput
+}
+
+type updateEmergencyContactPayload {
+  emergencyContact: EmergencyContact
+}
+
+input updateGalleryInput {
+  where: InputID
+  data: editGalleryInput
+}
+
+type updateGalleryPayload {
+  gallery: Gallery
+}
+
+input updateHomeInput {
+  where: InputID
+  data: editHomeInput
+}
+
+type updateHomePayload {
+  home: Home
+}
+
+input updatePostInput {
+  where: InputID
+  data: editPostInput
+}
+
+type updatePostPayload {
+  post: Post
+}
+
+input updateRecentActivityInput {
+  where: InputID
+  data: editRecentActivityInput
+}
+
+type updateRecentActivityPayload {
+  recentActivity: RecentActivity
+}
+
+input updateRegisterComplaintInput {
+  where: InputID
+  data: editRegisterComplaintInput
+}
+
+type updateRegisterComplaintPayload {
+  registerComplaint: RegisterComplaints
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateSocialWorkDetailInput {
+  where: InputID
+  data: editSocialWorkDetailInput
+}
+
+type updateSocialWorkDetailPayload {
+  socialWorkDetail: SocialWorkDetails
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  name: String!
+  hash: String!
+  sha256: String
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String!
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+  id: ID!
+}
+
+type UsersPermissionsRole {
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  id: ID!
+}
+
+type UsersPermissionsUser {
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
